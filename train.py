@@ -464,6 +464,10 @@ def train(hyp, opt, device, tb_writer=None):
                 torch.save(ckpt, last)
                 if best_fitness == fi:
                     torch.save(ckpt, best)
+                    try:
+                        torch.save(ckpt, '/content/drive/MyDrive/AIroad/yolov7/best.pt')
+                    except:
+                        print('Save to google cloud fail')
                 if (best_fitness == fi) and (epoch >= 200):
                     torch.save(ckpt, wdir / 'best_{:03d}.pt'.format(epoch))
                 if epoch == 0:
